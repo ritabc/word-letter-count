@@ -44,7 +44,8 @@ I assumed the following:
   * added `Object.send(:remove_const, :ActiveRecord)` to rails_helper: solution via SO user Jack12816 (https://stackoverflow.com/questions/46204197/testing-a-databaseless-rails-5-application-with-rspec-rails)
   * deleted app/models/application_record file, since it inherited from ActiveRecord
 - Since I am not computing anything with the key/name/identifier for the paragraph, nor am I storing it anywhere, I decided to make a Paragraph Model that does not take into account the key sent with the POST request. Additionally, since it sounds like only 1 key/value pair is being sent at a time, I decided to not do anything with (for example, store, conduct computations on, or return) the key
-
+- No titles or abbreviations ending in periods will be used (Mr. or etc.)
+- Decided to keep sentence-ending punctuation in each sentence, and that the easiest / most efficient way to do so involved regex.
 
 ## Style Guides and Philosophies Followed
 - Test Driven Development (TDD)
