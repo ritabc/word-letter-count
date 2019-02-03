@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # POST route for returning individual sentences and a word count for each sentence
+  post 'word_count_per_sentence' => 'paragraphs#word_count_per_sentence'
+
 end
