@@ -25,4 +25,10 @@ describe Paragraph do
       expect(@test_paragraph2.word_count_per_sentence).to eq({"Lorem Ipsum." => 2, "Oh Latin!" => 2, "But is it really Latin?" => 5})
     end
   end
+
+  describe '#total_letter_count' do
+    it 'counts case-insensitive letters in paragraph' do
+      expect(@test_paragraph2.total_letter_count).to eq({"a"=>3, "b"=>1, "e"=>2, "h"=>1, "i"=>5, "l"=>5, "m"=>2, "n"=>2, "o"=>2, "p"=>1, "r"=>2, "s"=>2, "t"=>4, "u"=>2, "y"=>1})
+    end
+  end
 end
