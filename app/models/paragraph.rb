@@ -1,10 +1,11 @@
 class Paragraph
-  attr_accessor(:content, :sentences, :sentence_and_word_count_hash)
+  attr_accessor(:content, :sentences, :sentence_and_word_count_hash, :letter_count_hash)
 
   def initialize(attributes)
     @content = attributes.fetch(:paragraph_content)
     @sentences = self.split_into_sentences
     @sentence_and_word_count_hash = self.word_count_per_sentence
+    @letter_count_hash = self.total_letter_count
   end
 
   def split_into_sentences
@@ -24,5 +25,18 @@ class Paragraph
       sentence_and_word_count_hash[sentence] = word_count
     end
     sentence_and_word_count_hash
+  end
+
+  def total_letter_count
+    letter_count_hash = {}
+    self.content.gsub(/[.?!\s]/, '').split('').each do |letter|
+      key = letter.downcase
+      if letter_count_hash.include?(key)
+        letter_count_hash[key] += 1
+      else
+        letter_count_hash[key] = 1
+      end
+    end
+    letter_count_hash
   end
 end
