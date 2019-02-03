@@ -29,7 +29,8 @@ class Paragraph
 
   def total_letter_count
     letter_count_hash = {}
-    self.content.gsub(/[.?!\s]/, '').split('').each do |letter|
+    # Only letters are counted, so first remove any non-letter character
+    self.content.gsub(/[^a-zA-Z]/, '').split('').each do |letter|
       key = letter.downcase
       if letter_count_hash.include?(key)
         letter_count_hash[key] += 1
