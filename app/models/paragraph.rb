@@ -1,8 +1,10 @@
 class Paragraph
-  attr_accessor(:content)
+  attr_accessor(:content, :sentences, :sentence_and_word_count_hash)
 
   def initialize(attributes)
     @content = attributes.fetch(:paragraph_content)
+    @sentences = self.split_into_sentences
+    @sentence_and_word_count_hash = self.word_count_per_sentence
   end
 
   def split_into_sentences
@@ -13,5 +15,14 @@ class Paragraph
       sentence.lstrip
     end
     @sentences
+  end
+
+  def word_count_per_sentence
+    sentence_and_word_count_hash = {}
+    @sentences.each do |sentence|
+      word_count = sentence.split(" ").length
+      sentence_and_word_count_hash[sentence] = word_count
+    end
+    sentence_and_word_count_hash
   end
 end
