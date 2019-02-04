@@ -3,16 +3,16 @@ class Paragraph
 
   def initialize(attributes)
     @content = attributes.fetch(:paragraph_content)
-    @sentences = self.split_into_sentences
-    @sentence_and_word_count_hash = self.word_count_per_sentence
-    @letter_count_hash = self.total_letter_count
+    @sentences = split_into_sentences
+    @sentence_and_word_count_hash = word_count_per_sentence
+    @letter_count_hash = total_letter_count
   end
 
   def split_into_sentences
     # substitute every sentence ender (period, question mark, or exclamation) with
     # itself plus a double comma, then split at the double commas.
     # Finally, strip the leading whitespace from each sentence
-    @sentences = self.content.gsub(/[.?!]/, '\0,,').split(',,').map do |sentence|
+    @sentences = content.gsub(/[.?!]/, '\0,,').split(',,').map do |sentence|
       sentence.lstrip
     end
     @sentences
@@ -30,7 +30,7 @@ class Paragraph
   def total_letter_count
     letter_count_hash = {}
     # Only letters are counted, so first remove any non-letter character
-    self.content.gsub(/[^a-zA-Z]/, '').split('').each do |letter|
+    content.gsub(/[^a-zA-Z]/, '').split('').each do |letter|
       key = letter.downcase
       if letter_count_hash.include?(key)
         letter_count_hash[key] += 1
