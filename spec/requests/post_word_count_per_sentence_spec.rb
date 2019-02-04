@@ -3,13 +3,14 @@ require 'rails_helper'
 describe 'word_count_per_sentence post request', :type => :request do
   context 'when successful' do
     before(:all) do
-      @test_paragraph1 = Paragraph.new(paragraph_content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." \
-                      " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," \
-                      " when an unknown printer took a galley of type and scrambled it to make a type" \
-                      " specimen book. It has survived not only five centuries, but also the leap into" \
-                      " electronic typesetting, remaining essentially unchanged.")
+      @test_paragraph1 = Paragraph.new(paragraph_content:
+                         "Lorem Ipsum is simply dummy text of the printing and typesetting industry." \
+                         " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," \
+                         " when an unknown printer took a galley of type and scrambled it to make a type" \
+                         " specimen book. It has survived not only five centuries, but also the leap into" \
+                         " electronic typesetting, remaining essentially unchanged.")
 
-       post '/word_count_per_sentence', params: {:key => 'p1', :value => @test_paragraph1.content}
+       post '/word_count_per_sentence', params: { key: 'p1', value: @test_paragraph1.content }
     end
 
     it 'returns individual sentences along with the word count per sentence' do

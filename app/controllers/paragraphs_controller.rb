@@ -11,6 +11,7 @@ class ParagraphsController < ApplicationController
   end
 
   private
+  
   def paragraph_params
     params.permit(:key, :value)
   end

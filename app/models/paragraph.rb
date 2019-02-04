@@ -21,7 +21,7 @@ class Paragraph
   def word_count_per_sentence
     sentence_and_word_count_hash = {}
     @sentences.each do |sentence|
-      word_count = sentence.split(" ").length
+      word_count = sentence.split(' ').length
       sentence_and_word_count_hash[sentence] = word_count
     end
     sentence_and_word_count_hash
