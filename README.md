@@ -46,10 +46,17 @@ I assumed the following:
 - Since I am not computing anything with the key/name/identifier for the paragraph, nor am I storing it anywhere, I decided to make a Paragraph Model that does not take into account the key sent with the POST request. Additionally, since it sounds like only 1 key/value pair is being sent at a time, I decided to not do anything with (for example, store, conduct computations on, or return) the key
 - No titles or abbreviations ending in periods will be used (Mr. or etc.)
 - Decided to keep sentence-ending punctuation in each sentence, and that the easiest / most efficient way to do so involved regex.
+- Assuming for total_letter_count, only a-z and A-Z letters should be counted (no spaces or punctuation)
+- No specific JSON requirements besides being readable and clear. If there was another application calling this API and expecting the JSON in a particular format, I may have used a serializer to format the output.
+- (For now) Assuming only POST requests are sent, so no custom or clean exception messages for GET, PUT, etc. requests are generated
+- Assumed that most of the time, 2 arguments will be submitted, one being 'key' and the other being 'value'. In practice only 'value' is required, and if the person or application calling the API submits other parameters, that is fine.
+  * However, for security purposes only key and value params are whitelisted.
+  * If 'value' is not submitted, an error will be thrown.
 
 ## Style Guides and Philosophies Followed
 - Test Driven Development (TDD)
 - [rubocop style guide](https://github.com/rubocop-hq/ruby-style-guide)
+- Comments were excluded in favor of easily readable code. Exceptions include multi-method chains
 
 ## Notes
 -
