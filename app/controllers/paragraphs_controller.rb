@@ -1,16 +1,17 @@
 class ParagraphsController < ApplicationController
 
   def word_count_per_sentence
-    new_paragraph = Paragraph.new(paragraph_content: permit_paragraphs["content"])
-    json_response(new_paragraph)
+    new_paragraph = Paragraph.new(paragraph_content: paragraph_params['value'])
+    json_response(new_paragraph.sentence_and_word_count_hash)
+  end
+
+  def total_letter_count
+    new_paragraph = Paragraph.new(paragraph_content: paragraph_params['value'])
+    json_response(new_paragraph.total_letter_count)
   end
 
   private
-  def json_response(object)
-    render json: object, status: :ok
-  end
-
-  def permit_paragraphs
-    params.permit(:key, :content)
+  def paragraph_params
+    params.permit(:key, :value)
   end
 end
